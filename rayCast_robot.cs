@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class rayCast_robot : MonoBehaviour
 {
+    Animator anim;
     // Start is called before the first frame update
     void Start()
     {
+        anim = transform.GetComponent<Animator> ();
         
     }
 
@@ -20,6 +22,7 @@ public class rayCast_robot : MonoBehaviour
     //가상의 레이인 레이캐스트를 테스트 중에는 보일 수 있도록 함
     if (Physics.Raycast (transform.position, forward, out hit)){
         Debug.Log("hit");
+        anim.SetBool("isHit",true);
         //만약에 레이캐스트가 어떠한 물체에 맞는다면 hit라는 문구를 냄
     }
         
