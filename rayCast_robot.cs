@@ -8,6 +8,8 @@ public class rayCast_robot : MonoBehaviour
 
     public int atkPnt; //공격력
     public int hltPnt; //체력
+
+    float timeElapsed;
     // Start is called before the first frame update
     void Start()
     {
