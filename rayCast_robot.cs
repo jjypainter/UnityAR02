@@ -5,10 +5,16 @@ using UnityEngine;
 public class rayCast_robot : MonoBehaviour
 {
     Animator anim;
+
+    public int atkPnt; //공격력
+    public int hltPnt; //체력
     // Start is called before the first frame update
     void Start()
     {
         anim = transform.GetComponent<Animator> ();
+
+        atkPnt=200;
+        hltPnt=5000;
         
     }
 
@@ -23,7 +29,13 @@ public class rayCast_robot : MonoBehaviour
     if (Physics.Raycast (transform.position, forward, out hit)){
         Debug.Log("hit");
         anim.SetBool("isHit",true);
-        //만약에 레이캐스트가 어떠한 물체에 맞는다면 hit라는 문구를 냄
+
+        timeElapsed=timeElapsed+Time.deltaTime; //초 단위로 지나가는 시간
+        if (timeElapsed >=3){ //3초에 한번씩 공격
+            hit.transform.GetComponent<rayCast_dragon> ().hltPnt=
+                hit.transform.GetComponent<rayCasst_dragon>().hltPnt-atkPnt; //상대방의 체력에서 공격력을 뺀다.
+            timeElapsed=0; //시간 초기화
+        }
     } else{
          anim.SetBool("isHit", false);
     }
