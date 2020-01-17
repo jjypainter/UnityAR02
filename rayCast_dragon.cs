@@ -5,10 +5,18 @@ using UnityEngine;
 public class rayCast_dragon : MonoBehaviour
 {
     Animator anim;
+
+    public int atkPnt;
+    public int hltPnt;
+
+    float timeElapsed;
     // Start is called before the first frame update
     void Start()
     {
         anim=transform.GetComponent<Animator> ();
+
+        atkPnt=200;
+        hltPnt=5000;
         
     }
 
@@ -24,7 +32,12 @@ public class rayCast_dragon : MonoBehaviour
         if (Physics.Raycast(transform.position, forward, out hit)){
             Debug.Log("hit");
             anim.SetBool("isHit", true);
-            //만약에 레이캐스트가 어떠한 물체에 맞는다면 hit라는 문구를 냄
+            timeElapsed=timeElapsed+Time.deltaTime;
+            if (timeElapsed>=3){
+                hit.transform.GetComponent<rayCast_robot>().hltPnt=
+                    hit.transform.GetComponent<rayCast_robot>().hltPnt-atkPnt;
+                timeElapsed=0;
+            }
         }else{
             anim.SetBool("isHit", false);
         }
