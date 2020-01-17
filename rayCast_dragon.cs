@@ -15,8 +15,8 @@ public class rayCast_dragon : MonoBehaviour
     {
         anim=transform.GetComponent<Animator> ();
 
-        atkPnt=200;
-        hltPnt=5000;
+        atkPnt=200; //공격력
+        hltPnt=5000; //체력
         
     }
 
@@ -32,14 +32,18 @@ public class rayCast_dragon : MonoBehaviour
         if (Physics.Raycast(transform.position, forward, out hit)){
             Debug.Log("hit");
             anim.SetBool("isHit", true);
-            timeElapsed=timeElapsed+Time.deltaTime;
-            if (timeElapsed>=3){
+            timeElapsed=timeElapsed+Time.deltaTime; //초 단위로 지나가는 시간
+            if (timeElapsed>=3){ //3초에 한번씩 공격
                 hit.transform.GetComponent<rayCast_robot>().hltPnt=
                     hit.transform.GetComponent<rayCast_robot>().hltPnt-atkPnt;
-                timeElapsed=0;
+                //상대방의 체력에서 공격력을 뺀다
+                timeElapsed=0; //시간 초기화
             }
         }else{
             anim.SetBool("isHit", false);
+        }
+        if(hltPnt<=0){
+            anim.SetBool("isDead", true);
         }
         
     }
