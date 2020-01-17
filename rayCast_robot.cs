@@ -6,8 +6,8 @@ public class rayCast_robot : MonoBehaviour
 {
     Animator anim;
 
-    public int atkPnt; //공격력
-    public int hltPnt; //체력
+    public int AtkPnt; //공격력
+    public int HltPnt; //체력
 
     float timeElapsed;
     // Start is called before the first frame update
@@ -15,8 +15,8 @@ public class rayCast_robot : MonoBehaviour
     {
         anim = transform.GetComponent<Animator> ();
 
-        atkPnt=200;
-        hltPnt=5000;
+        AtkPnt=200;
+        HltPnt=5000;
         
     }
 
@@ -34,8 +34,8 @@ public class rayCast_robot : MonoBehaviour
 
         timeElapsed=timeElapsed+Time.deltaTime; //초 단위로 지나가는 시간
         if (timeElapsed >=3){ //3초에 한번씩 공격
-            hit.transform.GetComponent<rayCast_dragon> ().hltPnt=
-                hit.transform.GetComponent<rayCast_dragon>().hltPnt-atkPnt; //상대방의 체력에서 공격력을 뺀다.
+            hit.transform.GetComponent<rayCast_dragon> ().HltPnt=
+                hit.transform.GetComponent<rayCast_dragon>().HltPnt-AtkPnt; //상대방의 체력에서 공격력을 뺀다.
             timeElapsed=0; //시간 초기화
         }
     } else{
