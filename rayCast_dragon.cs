@@ -25,6 +25,8 @@ public class rayCast_dragon : MonoBehaviour
             Debug.Log("hit");
             anim.SetBool("isHit", true);
             //만약에 레이캐스트가 어떠한 물체에 맞는다면 hit라는 문구를 냄
+        }else{
+            anim.SetBool("isHit", false);
         }
         
     }
