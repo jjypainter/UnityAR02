@@ -12,7 +12,7 @@ public class rayCast_robot : MonoBehaviour{
     // Start is called before the first frame update
     void Start()
     {
-        anim = transform.GetComponent<Animator> ();
+        anim=transform.GetComponent<Animator> ();
 
         atkPnt=200;
         hltPnt=5000;
