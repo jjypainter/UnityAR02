@@ -36,8 +36,8 @@ public class rayCast_robot : MonoBehaviour{
                              hit.transform.GetComponent<rayCast_dragon> ().hltPnt=
                                  hit.transform.GetComponent<rayCast_dragon>().hltPnt-atkPnt; //상대방의 체력에서 공격력을 뺀다.
 
-                             timeElapsed=0; //시간 초기화
-                              if (hltPnt<=0){
+                                 timeElapsed=0; //시간 초기화
+                                    if (hltPnt<=0){
                                               anim.SetBool("isDead", true);
                                                                             }             
                  } 
