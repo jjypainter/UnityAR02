@@ -39,17 +39,19 @@ public class rayCast_dragon : MonoBehaviour
 
             timeElapsed=timeElapsed+Time.deltaTime; //초 단위로 지나가는 시간
             if (timeElapsed>=3){ //3초에 한번씩 공격
-                hit.transform.GetComponent<rayCast_robot>().hltPnt=
-                    hit.transform.GetComponent<rayCast_robot>().hltPnt-atkPnt;
+                       hit.transform.GetComponent<rayCast_robot>().hltPnt=
+                           hit.transform.GetComponent<rayCast_robot>().hltPnt-atkPnt;
                 //상대방의 체력에서 공격력을 뺀다
-                timeElapsed=0; //시간 초기화
+                       timeElapsed=0; //시간 초기화
+
+                        if(hltPnt<=0){
+                                        anim.SetBool("isDead", true);
+        }
             }
         }else{
             anim.SetBool("isHit", false);
         }
-        if(hltPnt<=0){
-            anim.SetBool("isDead", true);
-        }
+       
         
     }
 }
